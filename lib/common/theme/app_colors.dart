@@ -9,4 +9,5 @@ class AppColors {
   static const Color textTertiary = Color(0xFFA9ABB7);
   static const Color greyLight = Color(0xFFF6F6F9);
   static const Color greyLighter = Color(0xFFFBFBFC);
+  static const Color greyDarker = Color(0xFF2C3035);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../common/theme/light_theme.dart';
 import 'hotel_screen/hotel_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,11 +9,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: themeLight,
       home: const HotelPage(),
     );
   }
