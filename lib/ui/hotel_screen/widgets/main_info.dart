@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/theme/app_colors.dart';
 import '../../../models/hotel.dart';
 import '../../common/section.dart';
 import 'rating.dart';
@@ -30,13 +31,33 @@ class MainInfo extends StatelessWidget {
             name: hotel.ratingName,
             rating: hotel.rating,
           ),
-          Text(hotel.name),
-          Text(hotel.adress),
+          Text(
+            hotel.name,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          GestureDetector(
+            // подумать, может лучше text button
+            onTap: () {},
+            child: Text(
+              hotel.adress,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelMedium!
+                  .copyWith(color: AppColors.blue),
+            ),
+          ),
           Row(
+            // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('от ${hotel.minimalPrice} ₽'),
+              Text(
+                'от ${hotel.minimalPrice} ₽',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(width: 8),
-              Text(hotel.priceForIt.toLowerCase()),
+              Text(
+                hotel.priceForIt.toLowerCase(),
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ],
           )
         ],

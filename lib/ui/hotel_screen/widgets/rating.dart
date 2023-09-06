@@ -25,7 +25,13 @@ class Rating extends StatelessWidget {
         children: [
           SvgPicture.asset('assets/icons/star.svg'),
           const SizedBox(width: 2),
-          Text('$rating $name'),
+          Text(
+            '$rating $name',
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: AppColors.yellow),
+          ),
         ],
       ),
     );

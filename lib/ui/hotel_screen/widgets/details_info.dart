@@ -40,8 +40,17 @@ class DetailsInfo extends StatelessWidget {
               dense: true,
               contentPadding: EdgeInsetsDirectional.zero,
               leading: SvgPicture.asset(_items[index].image),
-              title: Text(_items[index].title),
-              subtitle: Text(_items[index].subtitle),
+              title: Text(
+                _items[index].title,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: AppColors.black),
+              ),
+              subtitle: Text(
+                _items[index].subtitle,
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
               trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
               ),

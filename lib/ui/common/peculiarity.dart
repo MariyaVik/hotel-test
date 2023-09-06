@@ -15,7 +15,10 @@ class Peculiarity extends StatelessWidget {
         color: Theme.of(context).colorScheme.tertiaryContainer,
         borderRadius: BorderRadius.circular(5),
       ),
-      child: Text(text),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
     );
   }
 }

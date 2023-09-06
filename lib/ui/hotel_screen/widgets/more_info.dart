@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../common/theme/app_colors.dart';
 import '../../../models/hotel_info.dart';
 import '../../common/peculiarity.dart';
 import '../../common/section.dart';
@@ -20,7 +17,10 @@ class MoreInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Об отеле'),
+          Text(
+            'Об отеле',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
           Peculiarity(
             text: hotel.peculiarities[0],
           ),
