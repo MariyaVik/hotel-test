@@ -21,10 +21,13 @@ class MoreInfo extends StatelessWidget {
             'Об отеле',
             style: Theme.of(context).textTheme.titleMedium,
           ),
+          const SizedBox(height: 16),
           Peculiarity(
             text: hotel.peculiarities[0],
           ),
+          const SizedBox(height: 12),
           Text(hotel.description),
+          const SizedBox(height: 16),
           const DetailsInfo(),
         ],
       ),

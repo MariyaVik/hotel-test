@@ -34,7 +34,9 @@ class _HotelPageState extends State<HotelPage> {
           : ListView(
               children: [
                 MainInfo(hotel: hotel!),
+                const SizedBox(height: 8),
                 MoreInfo(hotel: hotel!.hotelInfo),
+                const SizedBox(height: 12),
               ],
             ),
       bottomNavigationBar: BottomAppBar(

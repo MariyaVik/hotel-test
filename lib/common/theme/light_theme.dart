@@ -5,6 +5,7 @@ import 'app_colors.dart';
 ThemeData _themeLight = ThemeData.light(useMaterial3: true);
 
 ThemeData themeLight = _themeLight.copyWith(
+  // canvasColor: Colors.white,
   colorScheme: _schemeLight(_themeLight.colorScheme),
   textTheme: _textLight(_themeLight.textTheme),
   elevatedButtonTheme: ElevatedButtonThemeData(style: _elevButtonLight),
@@ -102,12 +103,15 @@ AppBarTheme _appBarLight(AppBarTheme base) {
       fontFamily: 'SF',
       color: AppColors.black,
     ),
+    surfaceTintColor: AppColors.white,
   );
 }
 
 BottomAppBarTheme _bottomAppBarLight(BottomAppBarTheme base) {
   return base.copyWith(
     color: AppColors.white,
-    elevation: 5,
+    elevation: 3,
+    surfaceTintColor: AppColors.white,
+    shadowColor: AppColors.black,
   );
 }

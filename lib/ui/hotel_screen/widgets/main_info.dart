@@ -27,14 +27,17 @@ class MainInfo extends StatelessWidget {
                 return Image.network(hotel.imageUrls[index]);
               },
               options: CarouselOptions()),
+          const SizedBox(height: 16),
           Rating(
             name: hotel.ratingName,
             rating: hotel.rating,
           ),
+          const SizedBox(height: 8),
           Text(
             hotel.name,
             style: Theme.of(context).textTheme.titleMedium,
           ),
+          const SizedBox(height: 8),
           GestureDetector(
             // подумать, может лучше text button
             onTap: () {},
@@ -46,6 +49,7 @@ class MainInfo extends StatelessWidget {
                   .copyWith(color: AppColors.blue),
             ),
           ),
+          const SizedBox(height: 16),
           Row(
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
