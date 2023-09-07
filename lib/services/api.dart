@@ -2,6 +2,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 import '../models/hotel.dart';
+import '../models/hotel_rooms.dart';
 import 'api_urls.dart';
 
 part 'api.g.dart';
@@ -12,4 +13,7 @@ abstract class Api {
 
   @GET(ApiUrls.hotelUrl)
   Future<Hotel> getHotel();
+
+  @GET(ApiUrls.roomsUrl)
+  Future<HotelRooms> getRoomsMap();
 }
