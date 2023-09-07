@@ -1,8 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/theme/app_colors.dart';
 import '../../../models/hotel.dart';
+import '../../common/carousel_with_indicator.dart';
 import '../../common/section.dart';
 import 'rating.dart';
 
@@ -18,15 +18,11 @@ class MainInfo extends StatelessWidget {
     return Section(
       radiusTopLeft: 0,
       radiusTopRight: 0,
+      paddingTop: 0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CarouselSlider.builder(
-              itemCount: hotel.imageUrls.length,
-              itemBuilder: (context, index, realIndex) {
-                return Image.network(hotel.imageUrls[index]);
-              },
-              options: CarouselOptions()),
+          CarouselWithIndicator(images: hotel.imageUrls),
           const SizedBox(height: 16),
           Rating(
             name: hotel.ratingName,

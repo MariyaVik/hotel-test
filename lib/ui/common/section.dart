@@ -6,6 +6,10 @@ class Section extends StatelessWidget {
   final double radiusTopRight;
   final double radiusBottomLeft;
   final double radiusBottomRight;
+  final double paddingTop;
+  final double paddingRight;
+  final double paddingBottom;
+  final double paddingLeft;
   const Section({
     super.key,
     required this.child,
@@ -13,12 +17,21 @@ class Section extends StatelessWidget {
     this.radiusBottomRight = 12,
     this.radiusTopLeft = 12,
     this.radiusTopRight = 12,
+    this.paddingTop = 16,
+    this.paddingRight = 16,
+    this.paddingBottom = 16,
+    this.paddingLeft = 16,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.only(
+        top: paddingTop,
+        bottom: paddingBottom,
+        right: paddingRight,
+        left: paddingLeft,
+      ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(radiusTopLeft),
