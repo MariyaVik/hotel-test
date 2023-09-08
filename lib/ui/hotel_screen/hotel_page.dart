@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:hotel_test/main.dart';
+import '../../common/navigation/route_name.dart';
 import 'widgets/main_info.dart';
 import 'widgets/more_info.dart';
 
@@ -41,7 +43,9 @@ class _HotelPageState extends State<HotelPage> {
             ),
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(RouteName.room);
+          },
           child: Text('К выбору номера'),
         ),
       ),

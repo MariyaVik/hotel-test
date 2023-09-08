@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../common/navigation/route_name.dart';
 import '../../../common/theme/app_colors.dart';
 import '../../../models/room.dart';
 import '../../common/carousel_with_indicator.dart';
@@ -76,7 +78,9 @@ class RoomCard extends StatelessWidget {
           width: double.infinity,
           height: 48,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(RouteName.booking);
+            },
             child: Text('Выбрать номер'),
           ),
         ),

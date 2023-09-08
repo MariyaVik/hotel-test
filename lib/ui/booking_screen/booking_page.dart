@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:hotel_test/main.dart';
 import 'package:hotel_test/models/booking.dart';
+import '../../common/navigation/route_name.dart';
 import 'widgets/add_tourist.dart';
 import 'widgets/buyer_info.dart';
 import 'widgets/hotel_info_widget.dart';
@@ -60,7 +62,9 @@ class _BookingPageState extends State<BookingPage> {
             ),
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(RouteName.paid);
+          },
           child: Text('Оплатить'),
         ),
       ),
