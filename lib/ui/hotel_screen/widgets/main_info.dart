@@ -4,7 +4,7 @@ import '../../../common/theme/app_colors.dart';
 import '../../../models/hotel.dart';
 import '../../common/carousel_with_indicator.dart';
 import '../../common/section.dart';
-import 'rating.dart';
+import '../../common/rating.dart';
 
 class MainInfo extends StatelessWidget {
   final Hotel hotel;

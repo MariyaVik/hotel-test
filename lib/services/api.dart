@@ -1,3 +1,4 @@
+import 'package:hotel_test/models/booking.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -16,4 +17,7 @@ abstract class Api {
 
   @GET(ApiUrls.roomsUrl)
   Future<HotelRooms> getRoomsMap();
+
+  @GET(ApiUrls.reservationUrl)
+  Future<Booking> getBooking();
 }

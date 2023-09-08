@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../common/theme/app_colors.dart';
+import '../../common/theme/app_colors.dart';
 
 class Rating extends StatelessWidget {
   final int rating;

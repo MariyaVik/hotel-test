@@ -12,6 +12,7 @@ ThemeData themeLight = _themeLight.copyWith(
   textButtonTheme: TextButtonThemeData(style: _textButtonLight),
   appBarTheme: _appBarLight(_themeLight.appBarTheme),
   bottomAppBarTheme: _bottomAppBarLight(_themeLight.bottomAppBarTheme),
+  inputDecorationTheme: _inputDecorLight(_themeLight.inputDecorationTheme),
 );
 
 ColorScheme _schemeLight(ColorScheme base) {
@@ -21,6 +22,7 @@ ColorScheme _schemeLight(ColorScheme base) {
     onTertiary: AppColors.textSecondary,
     background: AppColors.greyLight,
     primary: AppColors.blue,
+    error: AppColors.error,
   );
 }
 
@@ -62,6 +64,12 @@ TextTheme _textLight(TextTheme base) {
       height: 16.8 / 14,
       color: AppColors.textSecondary,
       fontFamily: 'SF',
+    ),
+    labelLarge: base.labelLarge!.copyWith(
+      fontSize: 16,
+      height: 17.6 / 16,
+      fontFamily: 'SF',
+      letterSpacing: 0.75,
     ),
   );
 }
@@ -113,5 +121,23 @@ BottomAppBarTheme _bottomAppBarLight(BottomAppBarTheme base) {
     elevation: 3,
     surfaceTintColor: AppColors.white,
     shadowColor: AppColors.black,
+  );
+}
+
+InputDecorationTheme _inputDecorLight(InputDecorationTheme base) {
+  return base.copyWith(
+    errorStyle: const TextStyle(fontSize: 0, height: 0),
+    border: InputBorder.none,
+    focusedBorder: InputBorder.none,
+    enabledBorder: InputBorder.none,
+    errorBorder: InputBorder.none,
+    disabledBorder: InputBorder.none,
+    focusedErrorBorder: InputBorder.none,
+    labelStyle: const TextStyle(
+      fontSize: 17,
+      height: 20.4 / 17,
+      fontFamily: 'SF',
+      color: AppColors.textTertiary,
+    ),
   );
 }
