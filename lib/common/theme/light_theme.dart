@@ -126,6 +126,7 @@ BottomAppBarTheme _bottomAppBarLight(BottomAppBarTheme base) {
 
 InputDecorationTheme _inputDecorLight(InputDecorationTheme base) {
   return base.copyWith(
+    // isDense: true,
     errorStyle: const TextStyle(fontSize: 0, height: 0),
     border: InputBorder.none,
     focusedBorder: InputBorder.none,

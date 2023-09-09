@@ -9,7 +9,12 @@ import 'widgets/buyer_info.dart';
 import 'widgets/hotel_info_widget.dart';
 import 'widgets/prices.dart';
 import 'widgets/tour_info.dart';
-import 'widgets/tourists_card.dart';
+import 'widgets/tourist_card.dart';
+
+final List<GlobalKey<FormState>> formKeys = [
+  GlobalKey<FormState>(),
+  GlobalKey<FormState>(),
+];
 
 class BookingPage extends StatefulWidget {
   const BookingPage({super.key});
@@ -50,9 +55,10 @@ class _BookingPageState extends State<BookingPage> {
                 const SizedBox(height: 8),
                 BuyerInfo(),
                 const SizedBox(height: 8),
-                Tourist(),
-                const SizedBox(height: 8),
-                Tourist(),
+                const TouristCard(
+                  expand: true,
+                  touristNumber: 1,
+                ),
                 const SizedBox(height: 8),
                 AddTourist(),
                 const SizedBox(height: 8),
@@ -63,7 +69,17 @@ class _BookingPageState extends State<BookingPage> {
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
           onPressed: () {
-            context.pushNamed(RouteName.paid);
+            bool error = false;
+            for (int i = 0; i < formKeys.length; i++) {
+              if (formKeys[i].currentState!.validate()) {
+                continue;
+              } else {
+                error = true;
+              }
+            }
+            if (!error) {
+              context.pushNamed(RouteName.paid);
+            }
           },
           child: Text('Оплатить'),
         ),
