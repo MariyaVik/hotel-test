@@ -9,12 +9,14 @@ class CustomTextField extends StatefulWidget {
   final String? hint;
   final TextInputType? inputType;
   final String initValue;
+  final int? maxLength;
   final TextEditingController? textEditingController;
   final String? Function(String? value)? validator;
   final Function(String)? onTextChanged;
   final Function(String?)? onSaved;
   final List<TextInputFormatter>? inputFormatters;
   final bool isSingle;
+  final bool isPhone;
 
   const CustomTextField({
     super.key,
@@ -29,6 +31,8 @@ class CustomTextField extends StatefulWidget {
     this.onSaved,
     this.inputFormatters,
     this.isSingle = false,
+    this.isPhone = false,
+    this.maxLength,
   });
 
   @override
@@ -48,18 +52,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
     super.initState();
     widget.textEditingController?.text = widget.initValue;
 
-    if (widget.isSingle) {
-      _focusNode.addListener(() {
-        setState(() {
+    _focusNode.addListener(() {
+      setState(() {
+        if (widget.isPhone && _focusNode.hasFocus) {
+          if (widget.textEditingController?.text == '') {
+            widget.textEditingController?.text = '+7 (***) ***-**-**';
+          }
+          int cursorPos = widget.textEditingController!.text.indexOf('*');
+          cursorPos = cursorPos == -1
+              ? widget.textEditingController!.text.length
+              : cursorPos;
+          widget.textEditingController?.selection =
+              TextSelection.collapsed(offset: cursorPos);
+        }
+        if (widget.isSingle) {
           String? f =
               widget.validator?.call(widget.textEditingController!.text);
           hasError = f != null;
           _borderColor = hasError && !_focusNode.hasFocus
               ? AppColors.error.withOpacity(0.15)
               : AppColors.greyLight;
-        });
+        }
       });
-    }
+    });
   }
 
   @override
@@ -92,7 +107,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
         },
         inputFormatters: widget.inputFormatters,
         maxLines: 1,
+        maxLength: widget.maxLength,
         onChanged: (text) {
+          if (text.length == 1) {
+            _borderColor = AppColors.greyLight;
+            setState(() {});
+          }
           widget.onTextChanged?.call(text);
         },
         onSaved: (text) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_test/ui/booking_screen/booking_page.dart';
 
+import '../../common/phone_formatter.dart';
 import '../../common/section.dart';
 import 'custom_text_field.dart';
 
@@ -25,18 +26,29 @@ class _BuyerInfoState extends State<BuyerInfo> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 20),
-            CustomTextField(labelText: 'Номер телефона'),
+            CustomTextField(
+              labelText: 'Номер телефона',
+              isPhone: true,
+              textEditingController: TextEditingController(),
+              inputType: TextInputType.number,
+              inputFormatters: [PhoneFormatter()],
+              validator: (String? value) {
+                if (value == null || value == '') {
+                  return '';
+                }
+                return null;
+              },
+            ),
             const SizedBox(height: 8),
             CustomTextField(
               textEditingController: TextEditingController(),
               labelText: 'Почта',
               isSingle: true,
               validator: (String? value) {
-                if (value == null || value == '') {
-                  return '';
-                } else if (!RegExp(
-                        r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-                    .hasMatch(value)) {
+                if (value == null ||
+                    value == '' ||
+                    !RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                        .hasMatch(value)) {
                   return '';
                 }
                 return null;
