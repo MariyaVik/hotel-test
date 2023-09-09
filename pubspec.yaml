@@ -19,6 +19,7 @@ dependencies:
   flutter_svg: ^2.0.7
   go_router: ^10.1.2
   intl:
+  boxy:
 
 dev_dependencies:
   flutter_test:
