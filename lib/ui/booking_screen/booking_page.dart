@@ -42,7 +42,7 @@ class _BookingPageState extends State<BookingPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text('Бронирование'),
+        title: const Text('Бронирование'),
       ),
       body: bookingInfo == null
           ? const Center(child: CircularProgressIndicator())
@@ -53,14 +53,14 @@ class _BookingPageState extends State<BookingPage> {
                 const SizedBox(height: 8),
                 TourInfo(booking: bookingInfo!),
                 const SizedBox(height: 8),
-                BuyerInfo(),
+                const BuyerInfo(),
                 const SizedBox(height: 8),
                 const TouristCard(
                   expand: true,
                   touristNumber: 1,
                 ),
                 const SizedBox(height: 8),
-                AddTourist(),
+                const AddTourist(),
                 const SizedBox(height: 8),
                 Prices(bookingInfo: bookingInfo!),
                 const SizedBox(height: 8),
@@ -81,7 +81,7 @@ class _BookingPageState extends State<BookingPage> {
               context.pushNamed(RouteName.paid);
             }
           },
-          child: Text('Оплатить'),
+          child: const Text('Оплатить'),
         ),
       ),
     );

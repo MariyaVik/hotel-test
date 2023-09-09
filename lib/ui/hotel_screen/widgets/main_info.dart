@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/theme/app_colors.dart';
+import '../../../common/utils.dart';
 import '../../../models/hotel.dart';
 import '../../common/carousel_with_indicator.dart';
 import '../../common/section.dart';
@@ -50,7 +51,7 @@ class MainInfo extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'от ${hotel.minimalPrice} ₽',
+                'от ${priceFormat(hotel.minimalPrice)} ₽',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(width: 8),

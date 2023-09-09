@@ -15,7 +15,7 @@ class PaidPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: Text('Заказ оплачен'),
+        title: const Text('Заказ оплачен'),
       ),
       body: const Center(
         child: Column(
@@ -33,7 +33,7 @@ class PaidPage extends StatelessWidget {
           onPressed: () {
             context.go(RouteName.home);
           },
-          child: Text('Супер!'),
+          child: const Text('Супер!'),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/theme/app_colors.dart';
+import '../../../common/utils.dart';
 import '../../../models/booking.dart';
 import '../../common/section.dart';
 
@@ -38,7 +39,7 @@ class Prices extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall,
         ),
         Text(
-          '$price ₽',
+          '${priceFormat(price)} ₽',
           style: bold
               ? Theme.of(context)
                   .textTheme

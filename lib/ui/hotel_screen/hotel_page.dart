@@ -29,7 +29,7 @@ class _HotelPageState extends State<HotelPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text('Отель'),
+        title: const Text('Отель'),
       ),
       body: hotel == null
           ? const Center(child: CircularProgressIndicator())
@@ -46,7 +46,7 @@ class _HotelPageState extends State<HotelPage> {
           onPressed: () {
             context.pushNamed(RouteName.room);
           },
-          child: Text('К выбору номера'),
+          child: const Text('К выбору номера'),
         ),
       ),
     );

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 num normalizeDouble(
     num oldMin, num oldMax, num newMin, num newMax, num number) {
   num oldRange = oldMax - oldMin;
@@ -18,4 +20,9 @@ String getWordOrg(int num, String one, String two, String five) {
     return two;
   }
   return five;
+}
+
+String priceFormat(int price) {
+  var formatter = NumberFormat('#,###');
+  return formatter.format(price.toInt()).replaceAll(',', ' ');
 }

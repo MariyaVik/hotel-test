@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../common/navigation/route_name.dart';
 import '../../../common/theme/app_colors.dart';
+import '../../../common/utils.dart';
 import '../../../models/room.dart';
 import '../../common/carousel_with_indicator.dart';
 import '../../common/peculiarity.dart';
@@ -63,7 +64,7 @@ class RoomCard extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '${room.price} ₽',
+              '${priceFormat(room.price)} ₽',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(width: 8),
@@ -81,7 +82,7 @@ class RoomCard extends StatelessWidget {
             onPressed: () {
               context.pushNamed(RouteName.booking);
             },
-            child: Text('Выбрать номер'),
+            child: const Text('Выбрать номер'),
           ),
         ),
       ],

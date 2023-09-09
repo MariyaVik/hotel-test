@@ -8,7 +8,6 @@ class PhoneFormatter extends TextInputFormatter {
   ) {
     int cursorPos = newValue.text.indexOf('*');
     cursorPos = cursorPos == -1 ? newValue.text.length : cursorPos;
-    print(cursorPos);
 
 // сделать нормальное разделение
     final onlyPhone = newValue.text.replaceAll('-', '');

@@ -17,7 +17,7 @@ class TouristCard extends StatefulWidget {
     required this.touristNumber,
   });
   @override
-  _TouristCardState createState() => _TouristCardState();
+  State<TouristCard> createState() => _TouristCardState();
 }
 
 class _TouristCardState extends State<TouristCard> {
@@ -56,7 +56,8 @@ class Header extends StatelessWidget {
   final bool isCollapse;
   final VoidCallback onTap;
 
-  Header({
+  const Header({
+    super.key,
     required this.onTap,
     required this.isCollapse,
   });
@@ -64,6 +65,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
