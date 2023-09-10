@@ -130,6 +130,7 @@ class Content extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           CustomTextField(
+            inputType: TextInputType.datetime,
             labelText: 'Дата рождения',
             validator: (String? value) {
               if (value == null || value == '') {
@@ -150,6 +151,7 @@ class Content extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           CustomTextField(
+            inputType: TextInputType.number,
             labelText: 'Номер загранпаспорта',
             validator: (String? value) {
               if (value == null || value == '') {
@@ -160,6 +162,7 @@ class Content extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           CustomTextField(
+            inputType: TextInputType.datetime,
             labelText: 'Срок действия загранпаспорта',
             validator: (String? value) {
               if (value == null || value == '') {

@@ -29,11 +29,14 @@ class _BuyerInfoState extends State<BuyerInfo> {
             CustomTextField(
               labelText: 'Номер телефона',
               isPhone: true,
+              isSingle: true,
               textEditingController: TextEditingController(),
               inputType: TextInputType.number,
               inputFormatters: [PhoneFormatter()],
               validator: (String? value) {
-                if (value == null || value == '') {
+                if (value == null ||
+                    value == '' ||
+                    RegExp(r'[*]').hasMatch(value)) {
                   return '';
                 }
                 return null;
@@ -43,6 +46,7 @@ class _BuyerInfoState extends State<BuyerInfo> {
             CustomTextField(
               textEditingController: TextEditingController(),
               labelText: 'Почта',
+              inputType: TextInputType.emailAddress,
               isSingle: true,
               validator: (String? value) {
                 if (value == null ||
