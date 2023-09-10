@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_test/ui/common/constants.dart';
 
 import '../../../common/theme/app_colors.dart';
+import '../../../common/utils.dart';
+import '../../../cubits/booking_cubit.dart';
 import '../../common/section.dart';
-import '../booking_page.dart';
 import 'custom_text_field.dart';
 import 'expanded_section.dart';
 
@@ -35,6 +37,7 @@ class _TouristCardState extends State<TouristCard> {
       child: Column(
         children: [
           Header(
+            number: widget.touristNumber,
             isCollapse: !_expand,
             onTap: () {
               setState(() {
@@ -55,11 +58,13 @@ class _TouristCardState extends State<TouristCard> {
 class Header extends StatelessWidget {
   final bool isCollapse;
   final VoidCallback onTap;
+  final int number;
 
   const Header({
     super.key,
     required this.onTap,
     required this.isCollapse,
+    required this.number,
   });
 
   @override
@@ -71,7 +76,7 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Первый турист',
+            '${ordinalNumber(number)} турист',
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Container(
@@ -105,7 +110,7 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKeys[number],
+      key: BlocProvider.of<BookingCubit>(context).formKeys[number],
       child: Column(
         children: [
           const SizedBox(height: 20),

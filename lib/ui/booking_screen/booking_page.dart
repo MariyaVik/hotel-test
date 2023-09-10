@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../common/navigation/route_name.dart';
+import '../../common/utils.dart';
 import '../../cubits/booking_cubit.dart';
 import '../../models/states/booking_state.dart';
 import 'widgets/add_tourist.dart';
@@ -12,10 +13,10 @@ import 'widgets/prices.dart';
 import 'widgets/tour_info.dart';
 import 'widgets/tourist_card.dart';
 
-final List<GlobalKey<FormState>> formKeys = [
-  GlobalKey<FormState>(),
-  GlobalKey<FormState>(),
-];
+// final List<GlobalKey<FormState>> formKeys = [
+//   GlobalKey<FormState>(),
+//   GlobalKey<FormState>(),
+// ];
 
 class BookingPage extends StatelessWidget {
   const BookingPage({super.key});
@@ -41,10 +42,16 @@ class BookingPage extends StatelessWidget {
               const SizedBox(height: 8),
               const BuyerInfo(),
               const SizedBox(height: 8),
-              const TouristCard(
-                expand: true,
-                touristNumber: 1,
-              ),
+              ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => TouristCard(
+                        expand: true,
+                        touristNumber: index + 1,
+                      ),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 8),
+                  itemCount: state.toutistsCount),
               const SizedBox(height: 8),
               const AddTourist(),
               const SizedBox(height: 8),
@@ -58,6 +65,7 @@ class BookingPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             bool error = false;
+            final formKeys = BlocProvider.of<BookingCubit>(context).formKeys;
             for (int i = 0; i < formKeys.length; i++) {
               if (formKeys[i].currentState!.validate()) {
                 continue;
@@ -69,7 +77,11 @@ class BookingPage extends StatelessWidget {
               context.pushNamed(RouteName.paid);
             }
           },
-          child: const Text('Оплатить'),
+          child: BlocBuilder<BookingCubit, BookingState>(
+            builder: (context, state) {
+              return Text('Оплатить ${priceFormat(state.totalPrice)} ₽');
+            },
+          ),
         ),
       ),
     );

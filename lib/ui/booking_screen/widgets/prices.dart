@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/theme/app_colors.dart';
 import '../../../common/utils.dart';
+import '../../../cubits/booking_cubit.dart';
 import '../../../models/booking.dart';
 import '../../common/section.dart';
 
@@ -24,7 +26,8 @@ class Prices extends StatelessWidget {
         const SizedBox(height: 16),
         row(context, 'Сервисный сбор', bookingInfo.serviceCharge),
         const SizedBox(height: 16),
-        row(context, 'К оплате', 56415, true),
+        row(context, 'К оплате',
+            BlocProvider.of<BookingCubit>(context).totalPrice, true),
       ],
     ));
   }

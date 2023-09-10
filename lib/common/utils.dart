@@ -26,3 +26,19 @@ String priceFormat(int price) {
   var formatter = NumberFormat('#,###');
   return formatter.format(price.toInt()).replaceAll(',', ' ');
 }
+
+String ordinalNumber(int number) {
+  const List<String> names = [
+    'Первый',
+    'Второй',
+    'Третий',
+    'Четвёртый',
+    'Пятый',
+    'Шестой',
+    'Седьмой',
+    'Восьмой',
+    'Девятый',
+    'Десятый',
+  ];
+  return names[number - 1];
+}

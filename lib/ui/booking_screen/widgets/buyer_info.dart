@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_test/ui/booking_screen/booking_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../cubits/booking_cubit.dart';
 import '../../common/phone_formatter.dart';
 import '../../common/section.dart';
 import 'custom_text_field.dart';
@@ -17,7 +18,7 @@ class _BuyerInfoState extends State<BuyerInfo> {
   Widget build(BuildContext context) {
     return Section(
       child: Form(
-        key: formKeys[0],
+        key: BlocProvider.of<BookingCubit>(context).formKeys[0],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
