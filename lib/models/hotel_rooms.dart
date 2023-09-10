@@ -8,9 +8,9 @@ part 'hotel_rooms.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class HotelRooms {
-  List<Room> rooms;
+  final List<Room> rooms;
 
-  HotelRooms({required this.rooms});
+  const HotelRooms({required this.rooms});
 
   factory HotelRooms.fromJson(Map<String, dynamic> json) =>
       _$HotelRoomsFromJson(json);

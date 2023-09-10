@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:hotel_test/main.dart';
-import 'package:hotel_test/models/booking.dart';
 import '../../common/navigation/route_name.dart';
+import '../../cubits/booking_cubit.dart';
+import '../../models/states/booking_state.dart';
 import 'widgets/add_tourist.dart';
 import 'widgets/buyer_info.dart';
 import 'widgets/hotel_info_widget.dart';
@@ -16,26 +17,8 @@ final List<GlobalKey<FormState>> formKeys = [
   GlobalKey<FormState>(),
 ];
 
-class BookingPage extends StatefulWidget {
+class BookingPage extends StatelessWidget {
   const BookingPage({super.key});
-
-  @override
-  State<BookingPage> createState() => _BookingPageState();
-}
-
-class _BookingPageState extends State<BookingPage> {
-  Booking? bookingInfo;
-  bool isCollapse = true;
-
-  @override
-  void initState() {
-    super.initState();
-    client.getBooking().then((it) {
-      bookingInfo = it;
-      logger.i(bookingInfo);
-      setState(() {});
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,28 +27,33 @@ class _BookingPageState extends State<BookingPage> {
       appBar: AppBar(
         title: const Text('Бронирование'),
       ),
-      body: bookingInfo == null
-          ? const Center(child: CircularProgressIndicator())
-          : ListView(
-              children: [
-                const SizedBox(height: 8),
-                HotelInfoWidget(booking: bookingInfo!),
-                const SizedBox(height: 8),
-                TourInfo(booking: bookingInfo!),
-                const SizedBox(height: 8),
-                const BuyerInfo(),
-                const SizedBox(height: 8),
-                const TouristCard(
-                  expand: true,
-                  touristNumber: 1,
-                ),
-                const SizedBox(height: 8),
-                const AddTourist(),
-                const SizedBox(height: 8),
-                Prices(bookingInfo: bookingInfo!),
-                const SizedBox(height: 8),
-              ],
-            ),
+      body: BlocBuilder<BookingCubit, BookingState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return ListView(
+            children: [
+              const SizedBox(height: 8),
+              HotelInfoWidget(booking: state.booking),
+              const SizedBox(height: 8),
+              TourInfo(booking: state.booking),
+              const SizedBox(height: 8),
+              const BuyerInfo(),
+              const SizedBox(height: 8),
+              const TouristCard(
+                expand: true,
+                touristNumber: 1,
+              ),
+              const SizedBox(height: 8),
+              const AddTourist(),
+              const SizedBox(height: 8),
+              Prices(bookingInfo: state.booking),
+              const SizedBox(height: 8),
+            ],
+          );
+        },
+      ),
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
           onPressed: () {

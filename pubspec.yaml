@@ -20,6 +20,7 @@ dependencies:
   go_router: ^10.1.2
   intl:
   boxy:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:

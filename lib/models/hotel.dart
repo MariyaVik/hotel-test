@@ -8,22 +8,22 @@ part 'hotel.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Hotel {
-  int id;
-  String name;
-  String adress;
+  final int id;
+  final String name;
+  final String adress;
   @JsonKey(name: 'minimal_price')
-  int minimalPrice;
+  final int minimalPrice;
   @JsonKey(name: 'price_for_it')
-  String priceForIt;
-  int rating;
+  final String priceForIt;
+  final int rating;
   @JsonKey(name: 'rating_name')
-  String ratingName;
+  final String ratingName;
   @JsonKey(name: 'image_urls')
-  List<String> imageUrls;
+  final List<String> imageUrls;
   @JsonKey(name: 'about_the_hotel')
-  HotelInfo hotelInfo;
+  final HotelInfo hotelInfo;
 
-  Hotel({
+  const Hotel({
     required this.id,
     required this.name,
     required this.adress,
@@ -33,6 +33,18 @@ class Hotel {
     required this.ratingName,
     required this.imageUrls,
     required this.hotelInfo,
+  });
+
+  const Hotel.empty({
+    this.id = 0,
+    this.name = 'Отель',
+    this.adress = 'Адрес',
+    this.minimalPrice = 0,
+    this.priceForIt = 'за что-то',
+    this.rating = 0,
+    this.ratingName = 'Рейтинг',
+    this.imageUrls = const [],
+    this.hotelInfo = const HotelInfo.empty(),
   });
 
   factory Hotel.fromJson(Map<String, dynamic> json) => _$HotelFromJson(json);

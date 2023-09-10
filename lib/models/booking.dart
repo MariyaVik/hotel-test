@@ -6,34 +6,34 @@ part 'booking.g.dart';
 
 @JsonSerializable()
 class Booking {
-  int id;
+  final int id;
   @JsonKey(name: 'hotel_name')
-  String hotelName;
+  final String hotelName;
   @JsonKey(name: 'hotel_adress')
-  String hotelAdress;
+  final String hotelAdress;
   @JsonKey(name: 'horating')
-  int rating;
+  final int rating;
   @JsonKey(name: 'rating_name')
-  String ratingName;
-  String departure;
+  final String ratingName;
+  final String departure;
   @JsonKey(name: 'arrival_country')
-  String arrivalCountry;
+  final String arrivalCountry;
   @JsonKey(name: 'tour_date_start')
-  String tourDateStart;
+  final String tourDateStart;
   @JsonKey(name: 'tour_date_stop')
-  String tourDateStop;
+  final String tourDateStop;
   @JsonKey(name: 'number_of_nights')
-  int numberOfNights;
-  String room;
-  String nutrition;
+  final int numberOfNights;
+  final String room;
+  final String nutrition;
   @JsonKey(name: 'tour_price')
-  int tourPrice;
+  final int tourPrice;
   @JsonKey(name: 'fuel_charge')
-  int fuelCharge;
+  final int fuelCharge;
   @JsonKey(name: 'service_charge')
-  int serviceCharge;
+  final int serviceCharge;
 
-  Booking({
+  const Booking({
     required this.id,
     required this.hotelName,
     required this.hotelAdress,
@@ -49,6 +49,24 @@ class Booking {
     required this.tourPrice,
     required this.fuelCharge,
     required this.serviceCharge,
+  });
+
+  const Booking.empty({
+    this.id = 0,
+    this.hotelName = 'Отель',
+    this.hotelAdress = 'Адрес',
+    this.rating = 0,
+    this.ratingName = 'Рейтинг',
+    this.departure = 'Город',
+    this.arrivalCountry = 'Страна',
+    this.tourDateStart = 'Дата',
+    this.tourDateStop = 'Дата',
+    this.numberOfNights = 0,
+    this.room = 'Номер',
+    this.nutrition = 'Питание',
+    this.tourPrice = 0,
+    this.fuelCharge = 0,
+    this.serviceCharge = 0,
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) =>

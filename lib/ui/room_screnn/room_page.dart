@@ -1,45 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../main.dart';
-import '../../models/room.dart';
+import '../../cubits/hotel_cubit.dart';
+import '../../cubits/room_cubit.dart';
+import '../../models/states/hotel_state.dart';
+import '../../models/states/rooms_state.dart';
 import 'widgets/room_card.dart';
 
-class RoomPage extends StatefulWidget {
+class RoomPage extends StatelessWidget {
   const RoomPage({super.key});
-
-  @override
-  State<RoomPage> createState() => _RoomPageState();
-}
-
-class _RoomPageState extends State<RoomPage> {
-  List<Room>? rooms;
-  @override
-  void initState() {
-    super.initState();
-    client.getRoomsMap().then((it) {
-      rooms = it.rooms;
-      logger.i(it);
-      setState(() {});
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('СОХРАНЯТЬ НАЗВАНИЕ ОТЕЛЯ'),
+        title: BlocConsumer<HotelCubit, HotelState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Text(state.hotel.name);
+          },
+        ),
       ),
-      body: rooms == null
-          ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ListView.separated(
-                  itemBuilder: (context, index) =>
-                      RoomCard(room: rooms![index]),
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 8),
-                  itemCount: rooms!.length),
-            ),
+      body: BlocBuilder<RoomsCubit, RoomsState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: ListView.separated(
+                itemBuilder: (context, index) =>
+                    RoomCard(room: state.rooms[index]),
+                separatorBuilder: (context, index) => const SizedBox(height: 8),
+                itemCount: state.rooms.length),
+          );
+        },
+      ),
     );
   }
 }

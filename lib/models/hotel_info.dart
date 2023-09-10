@@ -6,12 +6,17 @@ part 'hotel_info.g.dart';
 
 @JsonSerializable()
 class HotelInfo {
-  String description;
-  List<String> peculiarities;
+  final String description;
+  final List<String> peculiarities;
 
-  HotelInfo({
+  const HotelInfo({
     required this.description,
     required this.peculiarities,
+  });
+
+  const HotelInfo.empty({
+    this.description = 'Описание',
+    this.peculiarities = const [],
   });
 
   factory HotelInfo.fromJson(Map<String, dynamic> json) =>
