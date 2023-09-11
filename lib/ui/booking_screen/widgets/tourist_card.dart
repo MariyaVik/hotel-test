@@ -5,6 +5,7 @@ import 'package:hotel_test/ui/common/constants.dart';
 import '../../../common/theme/app_colors.dart';
 import '../../../common/utils.dart';
 import '../../../cubits/booking_cubit.dart';
+import '../../common/date_formatter.dart';
 import '../../common/section.dart';
 import 'custom_text_field.dart';
 import 'expanded_section.dart';
@@ -135,8 +136,9 @@ class Content extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           CustomTextField(
-            inputType: TextInputType.datetime,
+            inputType: TextInputType.number,
             labelText: 'Дата рождения',
+            inputFormatters: [DateFormatter()],
             validator: (String? value) {
               if (value == null || value == '') {
                 return '';
@@ -167,8 +169,10 @@ class Content extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           CustomTextField(
-            inputType: TextInputType.datetime,
+            inputType: TextInputType.number,
             labelText: 'Срок действия загранпаспорта',
+            textInputAction: TextInputAction.done,
+            inputFormatters: [DateFormatter()],
             validator: (String? value) {
               if (value == null || value == '') {
                 return '';

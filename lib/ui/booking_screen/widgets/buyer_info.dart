@@ -49,6 +49,7 @@ class _BuyerInfoState extends State<BuyerInfo> {
               labelText: 'Почта',
               inputType: TextInputType.emailAddress,
               isSingle: true,
+              textInputAction: TextInputAction.done,
               validator: (String? value) {
                 if (value == null ||
                     value == '' ||

@@ -13,11 +13,6 @@ import 'widgets/prices.dart';
 import 'widgets/tour_info.dart';
 import 'widgets/tourist_card.dart';
 
-// final List<GlobalKey<FormState>> formKeys = [
-//   GlobalKey<FormState>(),
-//   GlobalKey<FormState>(),
-// ];
-
 class BookingPage extends StatelessWidget {
   const BookingPage({super.key});
 

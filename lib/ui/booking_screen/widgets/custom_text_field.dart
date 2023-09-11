@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool isSingle;
   final bool isPhone;
+  final TextInputAction? textInputAction;
 
   const CustomTextField({
     super.key,
@@ -33,6 +34,7 @@ class CustomTextField extends StatefulWidget {
     this.isSingle = false,
     this.isPhone = false,
     this.maxLength,
+    this.textInputAction = TextInputAction.next,
   });
 
   @override
@@ -108,6 +110,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
         inputFormatters: widget.inputFormatters,
         maxLines: 1,
         maxLength: widget.maxLength,
+        textInputAction: widget.textInputAction,
+        onTapOutside: (event) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         onChanged: (text) {
           if (text.length == 1) {
             _borderColor = AppColors.greyLight;

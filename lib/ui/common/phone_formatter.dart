@@ -19,19 +19,15 @@ class PhoneFormatter extends TextInputFormatter {
     } else {
       // проверяем на '-', подумать лучше
       if (newValue.selection.start == 12) {
-        print('12');
         chars.removeAt(newValue.selection.start - 1 - 4);
         cursorPos = oldValue.selection.start - 2;
       } else if (newValue.selection.start == 15) {
-        print('15');
         chars.removeAt(newValue.selection.start - 1 - 5);
         cursorPos = oldValue.selection.start - 2;
       } else if (newValue.selection.start == 8) {
-        print('8');
         chars.removeAt(newValue.selection.start - 1 - 3);
         cursorPos = oldValue.selection.start - 3;
       } else if (newValue.selection.start < 5) {
-        print('3');
         cursorPos = 4;
       } else {
         cursorPos = oldValue.selection.start - 1;
