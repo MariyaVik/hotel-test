@@ -18,5 +18,5 @@
 <p><img src="assets/images/screenshots/31.jpg", height=500><img src="assets/images/screenshots/33.jpg", height=500><img src="assets/images/screenshots/34.jpg", height=500><img src="assets/images/screenshots/35.jpg", height=500></p>
 
 ##### Экран "Оплачено"
-<p><img src="assets/images/screenshots/2.jpg", height=500></p>
+<p><img src="assets/images/screenshots/4.jpg", height=500></p>
 
